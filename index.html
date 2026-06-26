@@ -375,27 +375,118 @@ footer{background:linear-gradient(90deg,#1a1a2e,#16213e);color:rgba(255,255,255,
 .aisle-gap{height:12px;width:100%;background:transparent;display:flex;align-items:center;}
 .aisle-label{font-size:9px;color:#ddd;letter-spacing:1.5px;font-weight:600;padding-left:44px;}
 
-@media(max-width:900px){
-  .dest-grid{grid-template-columns:repeat(2,1fr);}
-  .search-row1{grid-template-columns:1fr 48px 1fr;}
-  .why-grid,.routes-grid{grid-template-columns:1fr 1fr;}
-  .dash-stats{grid-template-columns:1fr 1fr;}
-  nav{padding:0 16px;}
-  .stats-strip{gap:28px;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-  section{padding:50px 20px;}
-  .bk-panel{max-width:100%;}
-  .bus-type-cards{grid-template-columns:1fr 1fr;}
+/* =========================
+   Mobile Phones (0px - 767px)
+========================= */
+@media (max-width: 767px) {
+
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .hero {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .search-box,
+  .booking-form {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .booking-form input,
+  .booking-form select,
+  .booking-form button {
+    width: 100%;
+  }
+
+  .destinations {
+    grid-template-columns: 1fr;
+  }
+
+  .bus-cards {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    text-align: center;
+  }
 }
-@media(max-width:600px){
-  .dest-grid{grid-template-columns:1fr 1fr;}
-  .why-grid,.routes-grid,.dash-stats{grid-template-columns:1fr;}
-  .stats-strip{flex-direction:column;gap:16px;padding:20px;}
-  .search-card{padding:22px 16px;}
-  .btn-search{width:100%;justify-content:center;}
-  .footer-grid{grid-template-columns:1fr;}
-  .bus-type-cards{grid-template-columns:1fr;}
-  .bus-card-top{grid-template-columns:1fr 1fr;}
+
+/* =========================
+   Tablets (768px - 1023px)
+========================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .navbar {
+    padding: 15px 30px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .destinations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bus-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .booking-form {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+/* =========================
+   Laptop/Desktop (1024px and above)
+========================= */
+@media (min-width: 1024px) {
+
+  .navbar {
+    padding: 20px 60px;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .destinations {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bus-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   Large Screens (1440px and above)
+========================= */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    margin: auto;
+  }
 }
 </style>
 </head>
