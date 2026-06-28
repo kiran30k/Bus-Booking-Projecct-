@@ -18,12 +18,80 @@
 body{font-family:'Poppins',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:999;
-  background:linear-gradient(90deg,#1a1a2e,#16213e);
-  display:flex;align-items:center;justify-content:between;
-  padding:0 40px;height:66px;box-shadow:0 2px 20px rgba(0,0,0,0.3);
-  transition:var(--transition);}
-nav.scrolled{background:rgba(26,26,46,0.97);backdrop-filter:blur(12px);}
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:70px;
+    padding:0 40px;
+    background:linear-gradient(90deg,#1a1a2e,#16213e);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:999;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    gap:10px;
+    flex-shrink:0;
+}
+
+.logo-img{
+    width:40px;
+    height:40px;
+    object-fit:contain;
+    background:#fff;
+    border-radius:8px;
+    padding:2px;
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+}
+
+.logo-name{
+    font-size:14px;
+    font-weight:800;
+    color:#fff;
+    white-space:nowrap;
+}
+
+.logo-name span{
+    color:#ffd166;
+}
+
+.logo-tagline{
+    font-size:8px;
+    color:#aaa;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+    margin-left:auto;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+}
+
+.btn-nav{
+    background:#d7263d;
+    padding:10px 24px;
+    border-radius:10px;
+    color:#fff !important;
+}
 
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;}
 .logo-img{height:48px;width:auto;object-fit:contain;flex-shrink:0;}
@@ -608,12 +676,13 @@ footer{background:linear-gradient(90deg,#1a1a2e,#16213e);color:rgba(255,255,255,
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="logo">
-    <img src="./ChatGPT Image Jun 26, 2026, 09_39_15 PM - Copy - Copy.png"
+    <img src="./images/ChatGPT Image Jun 26, 2026, 09_39_15 PM - Copy - Copy.png"
          class="logo-img"
          alt="Kiran Travels">
+
     <div class="logo-text">
         <span class="logo-name">KIRAN <span>TRAVELS</span></span>
-        <span class="logo-tagline">Journey With Trust</span>
+        <span class="logo-tagline">JOURNEY WITH TRUST</span>
     </div>
 </a>
 </a>
@@ -863,7 +932,7 @@ footer{background:linear-gradient(90deg,#1a1a2e,#16213e);color:rgba(255,255,255,
 
     <!-- Left Side -->
     <div class="footer-brand">
-      <img src="./ChatGPT Image Jun 28, 2026, 06_55_21 PM.png"
+      <img src="./images/ChatGPT Image Jun 28, 2026, 06_55_21 PM.png"
            class="footer-logo-img"
            alt="Kiran Travels">
 
