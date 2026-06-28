@@ -79,7 +79,6 @@ nav.scrolled{background:rgba(26,26,46,0.97);backdrop-filter:blur(12px);}
 .custom-select-wrap{position:relative;}
 .custom-select-wrap select{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;font-size:16px;}
 
-/* Date Input - Proper styling, click/tap reliable across browsers */
 .date-input-wrapper {
   position: absolute;
   inset: 0;
@@ -637,11 +636,11 @@ footer{background:linear-gradient(90deg,#1a1a2e,#16213e);color:rgba(255,255,255,
 </div>
 
 <!-- STATS -->
-<div class="stats-strip">
-  <div class="stat"><div class="stat-num"><span id="cntBookings">0</span>+</div><div class="stat-label">Total Bookings</div></div>
-  <div class="stat"><div class="stat-num"><span id="cntRoutes">0</span></div><div class="stat-label">Active Routes</div></div>
-  <div class="stat"><div class="stat-num"><span id="cntBuses">0</span>+</div><div class="stat-label">Fleet Size</div></div>
-  <div class="stat"><div class="stat-num"><span id="cntRating">0</span>/5</div><div class="stat-label">Avg Rating</div></div>
+<div class="stats-strip" id="statsStrip">
+  <div class="stat"><div class="stat-num"><span id="cntBookings">1,247</span>+</div><div class="stat-label">Total Bookings</div></div>
+  <div class="stat"><div class="stat-num"><span id="cntRoutes">8</span></div><div class="stat-label">Active Routes</div></div>
+  <div class="stat"><div class="stat-num"><span id="cntBuses">25</span>+</div><div class="stat-label">Fleet Size</div></div>
+  <div class="stat"><div class="stat-num"><span id="cntRating">4.8</span>/5</div><div class="stat-label">Avg Rating</div></div>
 </div>
 
 <!-- POPULAR DESTINATIONS -->
@@ -651,38 +650,44 @@ footer{background:linear-gradient(90deg,#1a1a2e,#16213e);color:rgba(255,255,255,
   <h2 class="sec-title reveal">Where Do You Want to Go?</h2>
   <p class="sec-sub reveal">Explore our most-travelled routes with comfortable coaches every day</p>
   <div class="dest-grid">
+    <!-- Hyderabad: Charminar, the iconic landmark of Hyderabad -->
     <div class="dest-card reveal" onclick="quickBook('Hyderabad')" style="transition-delay:.05s">
-      <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&h=650&fit=crop" alt="Hyderabad">
+      <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=500&h=650&fit=crop" alt="Hyderabad - Charminar">
       <div class="dest-overlay">
         <div class="dest-name">Hyderabad</div>
         <div class="dest-from">From Anantapur · 4 hrs</div>
-        <div class="dest-price">From ₹299</div>
+        <div class="dest-price">From ₹1000</div>
       </div>
       <div class="dest-badge">Trending</div>
     </div>
+    <!-- Chennai: Marina Beach / Chennai cityscape -->
     <div class="dest-card reveal" onclick="quickBook('Chennai')" style="transition-delay:.1s">
       <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=500&h=650&fit=crop" alt="Chennai">
       <div class="dest-overlay">
         <div class="dest-name">Chennai</div>
         <div class="dest-from">From Anantapur · 5 hrs</div>
-        <div class="dest-price">From ₹349</div>
+        <div class="dest-price">From ₹1100</div>
       </div>
     </div>
+    <!-- Bangalore: Vidhana Soudha / Bangalore cityscape -->
     <div class="dest-card reveal" onclick="quickBook('Bangalore')" style="transition-delay:.15s">
       <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=500&h=650&fit=crop" alt="Bangalore">
       <div class="dest-overlay">
         <div class="dest-name">Bangalore</div>
         <div class="dest-from">From Anantapur · 3.5 hrs</div>
-        <div class="dest-price">From ₹279</div>
+        <div class="dest-price">From ₹500</div>
       </div>
       <div class="dest-badge">Popular</div>
     </div>
+    <!-- Tirupathi: Tirumala Venkateswara Temple -->
     <div class="dest-card reveal" onclick="quickBook('Tirupathi')" style="transition-delay:.2s">
-      <img src="https://images.unsplash.com/photo-1609944212222-56c8f5ec9b9d?w=500&h=650&fit=crop" alt="Tirupathi">
+      <img src="https://images.unsplash.com/photo-1609966868722-3a8a8b58c4a0?w=500&h=650&fit=crop"
+           onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Tirumala_temple.jpg/480px-Tirumala_temple.jpg'"
+           alt="Tirupathi - Tirumala Temple">
       <div class="dest-overlay">
         <div class="dest-name">Tirupathi</div>
         <div class="dest-from">From Anantapur · 2.5 hrs</div>
-        <div class="dest-price">From ₹199</div>
+        <div class="dest-price">From ₹700</div>
       </div>
     </div>
   </div>
@@ -711,14 +716,14 @@ footer{background:linear-gradient(90deg,#1a1a2e,#16213e);color:rgba(255,255,255,
   <h2 class="sec-title reveal">Explore Our Bus Routes</h2>
   <p class="sec-sub reveal">Daily departures on all routes — book your seat today</p>
   <div class="routes-grid">
-    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Bangalore')" style="transition-delay:.05s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Bangalore</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>3h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>6/day</div></div><div class="route-from-price">From <strong>₹279</strong></div></div>
-    <div class="route-card reveal" onclick="setRouteAndBook('Bangalore','Anantapur')" style="transition-delay:.1s"><div class="route-cities"><span>Bangalore</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>3h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>6/day</div></div><div class="route-from-price">From <strong>₹279</strong></div></div>
-    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Hyderabad')" style="transition-delay:.15s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Hyderabad</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>4h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>5/day</div></div><div class="route-from-price">From <strong>₹299</strong></div></div>
-    <div class="route-card reveal" onclick="setRouteAndBook('Hyderabad','Anantapur')" style="transition-delay:.2s"><div class="route-cities"><span>Hyderabad</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>4h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>5/day</div></div><div class="route-from-price">From <strong>₹299</strong></div></div>
-    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Chennai')" style="transition-delay:.05s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Chennai</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>5h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>4/day</div></div><div class="route-from-price">From <strong>₹349</strong></div></div>
-    <div class="route-card reveal" onclick="setRouteAndBook('Chennai','Anantapur')" style="transition-delay:.1s"><div class="route-cities"><span>Chennai</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>5h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>4/day</div></div><div class="route-from-price">From <strong>₹349</strong></div></div>
-    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Tirupathi')" style="transition-delay:.15s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Tirupathi</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>2h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>8/day</div></div><div class="route-from-price">From <strong>₹199</strong></div></div>
-    <div class="route-card reveal" onclick="setRouteAndBook('Tirupathi','Anantapur')" style="transition-delay:.2s"><div class="route-cities"><span>Tirupathi</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>2h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>8/day</div></div><div class="route-from-price">From <strong>₹199</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Bangalore')" style="transition-delay:.05s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Bangalore</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>3h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>6/day</div></div><div class="route-from-price">From <strong>₹500</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Bangalore','Anantapur')" style="transition-delay:.1s"><div class="route-cities"><span>Bangalore</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>3h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>6/day</div></div><div class="route-from-price">From <strong>₹500</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Hyderabad')" style="transition-delay:.15s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Hyderabad</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>4h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>5/day</div></div><div class="route-from-price">From <strong>₹1000</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Hyderabad','Anantapur')" style="transition-delay:.2s"><div class="route-cities"><span>Hyderabad</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>4h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>5/day</div></div><div class="route-from-price">From <strong>₹1000</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Chennai')" style="transition-delay:.05s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Chennai</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>5h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>4/day</div></div><div class="route-from-price">From <strong>₹1200</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Chennai','Anantapur')" style="transition-delay:.1s"><div class="route-cities"><span>Chennai</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>5h 00m</div><div class="route-meta-item"><i class="fas fa-bus"></i>4/day</div></div><div class="route-from-price">From <strong>₹1200</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Anantapur','Tirupathi')" style="transition-delay:.15s"><div class="route-cities"><span>Anantapur</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Tirupathi</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>2h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>8/day</div></div><div class="route-from-price">From <strong>₹700</strong></div></div>
+    <div class="route-card reveal" onclick="setRouteAndBook('Tirupathi','Anantapur')" style="transition-delay:.2s"><div class="route-cities"><span>Tirupathi</span><span class="route-arrow"><i class="fas fa-arrow-right"></i></span><span>Anantapur</span></div><div class="route-meta"><div class="route-meta-item"><i class="fas fa-clock"></i>2h 30m</div><div class="route-meta-item"><i class="fas fa-bus"></i>8/day</div></div><div class="route-from-price">From <strong>₹700</strong></div></div>
   </div>
 </section>
 </div>
@@ -912,13 +917,7 @@ function swapCities(){
   updateFromDisplay(); updateToDisplay();
 }
 
-/* ── DATE FUNCTIONS ──
-   Fix: clicking anywhere on the Travel Date field now reliably opens the
-   native date picker. We use input.showPicker() (supported in all modern
-   Chrome/Edge/Safari/Android browsers) triggered from a click on the
-   wrapping field, in addition to the input itself already covering the
-   whole field. This removes the dependency on hitting the tiny native
-   calendar icon exactly. */
+/* ── DATE ── */
 function initDateInput() {
   const dateInput = document.getElementById('dateInput');
   const today = new Date();
@@ -926,57 +925,37 @@ function initDateInput() {
   const month = String(today.getMonth() + 1).padStart(2, '0');
   const day = String(today.getDate()).padStart(2, '0');
   const todayStr = `${year}-${month}-${day}`;
-
   dateInput.min = todayStr;
   dateInput.value = todayStr;
   updateDateDisplay();
-
   const fieldWrap = document.getElementById('dateFieldWrap');
-  fieldWrap.addEventListener('click', function(e){
-    openDatePicker();
-  });
+  fieldWrap.addEventListener('click', function(e){ openDatePicker(); });
 }
 
 function openDatePicker(){
   const dateInput = document.getElementById('dateInput');
   try{
-    if (typeof dateInput.showPicker === 'function') {
-      dateInput.showPicker();
-    } else {
-      dateInput.focus();
-      dateInput.click();
-    }
-  } catch(err){
-    dateInput.focus();
-  }
+    if (typeof dateInput.showPicker === 'function') { dateInput.showPicker(); }
+    else { dateInput.focus(); dateInput.click(); }
+  } catch(err){ dateInput.focus(); }
 }
 
 function updateDateDisplay() {
   const dateInput = document.getElementById('dateInput');
   const displayEl = document.getElementById('dateDisplay');
   const v = dateInput.value;
-  
-  if (!v) {
-    displayEl.textContent = 'Select date';
-    return;
-  }
-  
+  if (!v) { displayEl.textContent = 'Select date'; return; }
   const parts = v.split('-');
   const date = new Date(parts[0], parts[1] - 1, parts[2]);
   const options = { day: 'numeric', month: 'short', year: 'numeric' };
   displayEl.textContent = date.toLocaleDateString('en-IN', options);
 }
 
-/* ── BOOKING FUNCTIONS ── */
+/* ── BOOKING ── */
 function bookNow() {
   const from = document.getElementById('fromSelect').value;
   const to = document.getElementById('toSelect').value;
-  
-  if (from === to) {
-    showToast('⚠️ Error','Please choose different cities!','#f59e0b');
-    return;
-  }
-  
+  if (from === to) { showToast('⚠️ Error','Please choose different cities!','#f59e0b'); return; }
   openBookingPanel();
 }
 
@@ -987,11 +966,9 @@ function openBookingPanel(){
   const base=routePrices[key]||299;
   const dur=routeDur[key]||'3h 00m';
   const dateStr=document.getElementById('dateDisplay').textContent;
-  
   bkState={from,to,date:dateStr,busType:null,busIdx:null,expandedBus:null,
     deck:'lower',selectedSeats:[],bookedCache:{},pricePerSeat:base,step:1,passengers:[],
     currentPassenger: {name:'', email:'', phone:'', dob:'', age:''}};
-    
   document.getElementById('bkRouteTitle').textContent=`${from} → ${to}`;
   document.getElementById('bkRouteSub').textContent=`${dateStr} · ${dur}`;
   updateStepUI();
@@ -1029,7 +1006,7 @@ function updateSummary(){
   document.getElementById('btnConfirm').disabled=count===0 || bkState.selectedSeats.length===0;
 }
 
-/* ── STEP 1: Bus Type ── */
+/* ── STEP 1 ── */
 function renderStep1(){
   const key=bkState.from+'-'+bkState.to;
   const base=routePrices[key]||299;
@@ -1055,7 +1032,7 @@ function selectBusType(typeId, price){
   renderStep2();
 }
 
-/* ── STEP 2: Bus List & Seats ── */
+/* ── STEP 2 ── */
 function renderStep2(){
   const buses=BUSES[bkState.busType]||[];
   const typeObj=BUS_TYPES.find(b=>b.id===bkState.busType);
@@ -1102,10 +1079,6 @@ function renderBusCard(bus, idx, typeObj){
     </div>`;
 }
 
-/* Continue bar: shown below the seat layout once at least one seat is
-   selected, so there is always a clear way to move from seat selection
-   (Step 2) to passenger details (Step 3). Re-rendered every time seats
-   are toggled via updateContinueBar(). */
 function renderContinueBar(){
   const count = bkState.selectedSeats.length;
   if(count===0) return '';
@@ -1143,11 +1116,7 @@ function goStep(n){
   else if(n===3) renderStep3();
 }
 
-/* ── SEAT LAYOUT ──
-   Fix: seat selection now uses data-seat-id + reads/writes state directly
-   on the clicked element, instead of trying to string-match a stringified
-   onclick attribute (which silently failed to find/update the right
-   element, especially after re-renders and on touch devices). */
+/* ── SEAT LAYOUT ── */
 function renderSeatLayout(busIdx){
   const typeId=bkState.busType;
   const hasDecks=typeId==='sleeper'||typeId==='semi';
@@ -1156,16 +1125,10 @@ function renderSeatLayout(busIdx){
       <button class="deck-tab ${bkState.deck==='lower'?'active':''}" onclick="switchDeck('lower',${busIdx})">Lower Deck</button>
       <button class="deck-tab ${bkState.deck==='upper'?'active':''}" onclick="switchDeck('upper',${busIdx})">Upper Deck</button>
     </div>`:'';
-
   let layoutHTML='';
-  if(typeId==='sleeper'){
-    layoutHTML=renderSleeperLayout(busIdx);
-  } else if(typeId==='semi'){
-    layoutHTML=renderSemiLayout(busIdx);
-  } else {
-    layoutHTML=renderSeaterLayout(busIdx);
-  }
-
+  if(typeId==='sleeper'){ layoutHTML=renderSleeperLayout(busIdx); }
+  else if(typeId==='semi'){ layoutHTML=renderSemiLayout(busIdx); }
+  else { layoutHTML=renderSeaterLayout(busIdx); }
   return `${deckTabs}<div class="seat-scroll-container"><div class="seat-layout" data-bus-idx="${busIdx}"><div class="bus-front"><div class="driver-area">DRIVER 🚗</div></div>${layoutHTML}<div class="seat-legend"><div class="legend-item"><div class="legend-dot ld-avail"></div>Available</div><div class="legend-item"><div class="legend-dot ld-booked"></div>Booked</div><div class="legend-item"><div class="legend-dot ld-selected"></div>Selected</div></div></div></div>`;
 }
 
@@ -1253,30 +1216,22 @@ function toggleSeat(el){
   const id = el.getAttribute('data-seat-id');
   const booked = el.getAttribute('data-booked') === 'true';
   if(booked) return;
-
   const idx=bkState.selectedSeats.indexOf(id);
-  if(idx>-1){
-    bkState.selectedSeats.splice(idx,1);
-  } else {
-    if(bkState.selectedSeats.length>=6){
-      showToast('⚠️ Limit','Max 6 seats per booking','#f59e0b');
-      return;
-    }
+  if(idx>-1){ bkState.selectedSeats.splice(idx,1); }
+  else {
+    if(bkState.selectedSeats.length>=6){ showToast('⚠️ Limit','Max 6 seats per booking','#f59e0b'); return; }
     bkState.selectedSeats.push(id);
   }
-
   const isSleeper = el.classList.contains('berth');
   const sel = bkState.selectedSeats.includes(id);
-  if(isSleeper){
-    el.className = `berth ${sel?'b-selected':'b-avail'}`;
-  } else {
-    el.className = `seat ${sel?'s-selected':'s-avail'}`;
-  }
-
+  if(isSleeper){ el.className = `berth ${sel?'b-selected':'b-avail'}`; }
+  else { el.className = `seat ${sel?'s-selected':'s-avail'}`; }
   updateStepUI();
   updateSummary();
   updateContinueBar();
 }
+
+/* ── STEP 3 ── */
 function renderStep3(){
   const passengerCount = bkState.selectedSeats.length;
   document.getElementById('bkBody').innerHTML=`
@@ -1333,29 +1288,13 @@ function addPassenger(){
   const phone=document.getElementById('passengerPhone')?.value.trim();
   const age=document.getElementById('passengerAge')?.value;
   const dob=document.getElementById('passengerDOB')?.value;
-  
-  if(!name || !email || !phone || !age || !dob){
-    showToast('⚠️ Incomplete','Please fill all passenger details','#f59e0b');
-    return;
-  }
-  
+  if(!name || !email || !phone || !age || !dob){ showToast('⚠️ Incomplete','Please fill all passenger details','#f59e0b'); return; }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if(!emailRegex.test(email)){
-    showToast('⚠️ Invalid Email','Please enter a valid email address','#f59e0b');
-    return;
-  }
-  
+  if(!emailRegex.test(email)){ showToast('⚠️ Invalid Email','Please enter a valid email address','#f59e0b'); return; }
   bkState.passengers.push({name, email, phone, dob, age});
-  
   const passengerCount=bkState.selectedSeats.length;
-  if(bkState.passengers.length===passengerCount){
-    bkState.step=4;
-    updateStepUI();
-    updateSummary();
-    renderStep4();
-  } else {
-    renderStep3();
-  }
+  if(bkState.passengers.length===passengerCount){ bkState.step=4; updateStepUI(); updateSummary(); renderStep4(); }
+  else { renderStep3(); }
 }
 
 function removePassenger(idx){
@@ -1363,7 +1302,7 @@ function removePassenger(idx){
   renderStep3();
 }
 
-/* ── STEP 4: Review & Payment ── */
+/* ── STEP 4 ── */
 function renderStep4(){
   const total = bkState.passengers.length * bkState.pricePerSeat;
   document.getElementById('bkBody').innerHTML=`
@@ -1410,7 +1349,7 @@ function handleConfirm(){
   bkState={from:'Anantapur', to:'Bangalore', date:'', busType:null, busIdx:null,expandedBus:null,deck:'lower',selectedSeats:[],bookedCache:{},pricePerSeat:0,step:1,passengers:[],currentPassenger:{name:'',email:'',phone:'',dob:'',age:''}};
 }
 
-/* ───── Quick Helpers ───── */
+/* ── QUICK HELPERS ── */
 function quickBook(dest){
   document.getElementById('fromSelect').value='Anantapur'; updateFromDisplay();
   const ts=document.getElementById('toSelect');
@@ -1429,7 +1368,7 @@ function setRouteAndBook(from,to){
   setTimeout(bookNow,550);
 }
 
-/* ───── Toast ───── */
+/* ── TOAST ── */
 function showToast(text,sub,iconColor){
   document.getElementById('toastText').textContent=text;
   document.getElementById('toastSub').textContent=sub||'';
@@ -1441,39 +1380,66 @@ function showToast(text,sub,iconColor){
   setTimeout(()=>t.classList.remove('show'),4500);
 }
 
-/* ───── Scroll reveal ───── */
+/* ── SCROLL REVEAL ── */
 const revealEls=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
 revealEls.forEach(el=>obs.observe(el));
 
-/* ───── Counter ───── */
-function animCount(id,target,dur,decimals){
-  const el=document.getElementById(id); if(!el) return;
-  let start=null;
-  (function step(ts){
-    if(!start) start=ts;
-    const p=Math.min((ts-start)/dur,1), ease=1-Math.pow(1-p,3), val=target*ease;
-    el.textContent=decimals?val.toFixed(decimals):Math.floor(val).toLocaleString('en-IN');
-    if(p<1) requestAnimationFrame(step);
+/* ────────────────────────────────────────
+   STATS COUNTER — FIXED
+   Uses threshold:0.1 so it fires as soon
+   as 10% of the strip enters the viewport.
+   Also fires immediately on load if the
+   strip is already visible (above-the-fold
+   on large screens / after scroll).
+──────────────────────────────────────── */
+function animCount(id, target, dur, decimals) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let start = null;
+  (function step(ts) {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = target * ease;
+    el.textContent = decimals
+      ? val.toFixed(decimals)
+      : Math.floor(val).toLocaleString('en-IN');
+    if (p < 1) requestAnimationFrame(step);
   })(performance.now());
 }
 
-const statsObs=new IntersectionObserver(e=>{
-  if(e.isIntersecting){
-    animCount('cntBookings',1247,2000,0);
-    animCount('cntRoutes',8,1200,0);
-    animCount('cntBuses',25,1500,0);
-    animCount('cntRating',4.8,1800,1);
+function runCounters() {
+  animCount('cntBookings', 1247, 2000, 0);
+  animCount('cntRoutes',      8, 1200, 0);
+  animCount('cntBuses',      25, 1500, 0);
+  animCount('cntRating',    4.8, 1800, 1);
+}
+
+const strip = document.getElementById('statsStrip');
+if (strip) {
+  const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        runCounters();
+        statsObs.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+
+  statsObs.observe(strip);
+
+  /* Fallback: if strip is already visible when page loads */
+  const rect = strip.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    runCounters();
     statsObs.disconnect();
   }
-},{threshold:.5});
+}
 
-const strip=document.querySelector('.stats-strip');
-if(strip) statsObs.observe(strip);
-
-/* ── Initialization ── */
+/* ── INIT ── */
 document.addEventListener('DOMContentLoaded', initDateInput);
-if(document.readyState !== 'loading') initDateInput();
+if (document.readyState !== 'loading') initDateInput();
 </script>
 </body>
 </html>
